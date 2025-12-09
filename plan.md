@@ -1,77 +1,81 @@
 # {{PROBLEM}} Class Design Recipe
 
-Copy this into a `recipe.md` in your project and fill it out.
-
 ## 1. Describe the Problem
 
-_Put or write the user story here. Add any clarifying notes you might have._
+As a user
+So that I can keep track of my music listening
+I want to add tracks I've listened to and see a list of them.
+
 
 ## 2. Design the Class Interface
 
-_Include the initializer, public properties, and public methods with all parameters, return values, and side-effects._
 
 ```python
 # EXAMPLE
 
-class Reminder:
-    # User-facing properties:
-    #   name: string
+class Tracks:
 
-    def __init__(self, name):
-        # Parameters:
-        #   name: string
-        # Side effects:
-        #   Sets the name property of the self object
-        pass # No code here yet
+    def __init__(self):
+        # Parameters: nothing 
+        # output: nothing 
+        # side effects: creates song list
 
-    def remind_me_to(self, task):
-        # Parameters:
-        #   task: string representing a single task
-        # Returns:
-        #   Nothing
-        # Side-effects
-        #   Saves the task to the self object
-        pass # No code here yet
+    def add_track(self, song):
+        # Parameters: the song that is to be added, a string 
+        # output: nothing
+        # side effects: adds the parameter to list
 
-    def remind(self):
-        # Returns:
-        #   A string reminding the user to do the task
-        # Side-effects:
-        #   Throws an exception if no task is set
-        pass # No code here yet
+    def list_track(self):
+        # Parameters: nothing 
+        # output: the list items as a string
+        # side effects: nothing
 ```
 
 ## 3. Create Examples as Tests
 
-_Make a list of examples of how the class will behave in different situations._
+
 
 ``` python
 # EXAMPLE
 
 """
-Given a name and a task
-#remind reminds the user to do the task
-"""
-reminder = Reminder("Kay")
-reminder.remind_me_to("Walk the dog")
-reminder.remind() # => "Walk the dog, Kay!"
+test_starts_with_no_tracks:
+input: tracks = Tracks()
+Expected output = empty list, []
 
 """
-Given a name and no task
-#remind raises an exception
-"""
-reminder = Reminder("Kay")
-reminder.remind() # raises an error with the message "No task set."
 
 """
-Given a name and an empty task
-#remind still reminds the user to do the task, even though it looks odd
-"""
-reminder = Reminder("Kay")
-reminder.remind_me_to("")
-reminder.remind() # => ", Kay!"
-```
+test_add_single_track:
+input: track.add_track('bohemian rhapsody')
+Expected output = ['bohemian rhapsody']
 
+"""
+
+"""
+test_add_multiple_tracks:
+input: track.add_track('bohemian rhapsody')
+       track.add_track('Billie jean')
+       track.add_track('weird fishes')
+Expected output = ['bohemian rhapsody', 'Billie jean', 'weird fishes']
+
+"""
+
+"""
+test_return_after_add_single_track:
+input: track.add_track('bohemian rhapsody')
+Expected output = 'bohemian rhapsody'
+
+"""
+
+"""
+test_return_after_add_multiple_tracks:
+input: track.add_track('bohemian rhapsody')
+       track.add_track('Billie jean')
+       track.add_track('weird fishes')
+Expected output = 'bohemian rhapsody, Billie jean, weird fishes'
+
+"""
 _Encode each example as a test. You can add to the above list as you go._
 
 ## 4. Implement the Behaviour
